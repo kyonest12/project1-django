@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block tittle %}
+    <title> Add </title>
+{% endblock %}
+
+{% block body %}
+    <div class = 'container'>
+        <h1> Thêm thông tin cá nhân </h1>
+        <br>
+        <div class = "form-group">
+            <form method="POST", enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.media}}
+                {{ form.as_p }}
+                <button class = "btn btn-secondary"> Create </button>
+            </form>
+        </div>
+    </div>
+    <script>
+        var user_id = {{ user.id }};
+        document.getElementById("user_id").value = user_id;
+
+    </script>
+{% endblock %}

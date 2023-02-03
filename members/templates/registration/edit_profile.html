@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block tittle %}
+    <title> Edit_profile </title>
+{% endblock %}
+
+{% block body %}
+    <div class = 'container'>
+        <h1> Chỉnh sửa thông tin tài khoản </h1>
+        <br>
+        <div class = "form-group">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class = "btn btn-secondary"> Chỉnh sửa </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

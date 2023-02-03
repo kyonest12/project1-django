@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block tittle %}
+    <title> Update </title>
+{% endblock %}
+
+{% block body %}
+    {% if blog.user.id == user.id %}
+        <div class = 'container'>
+            <h1> Chỉnh sửa bài viết </h1>
+            <br>
+            <div class = "form-group">
+                <form method="POST", enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.media }}
+                    {{ form.as_p }}
+                    <button class = "btn btn-secondary"> Update </button>
+                </form>
+            </div>
+    </div>
+    {% else %}
+        <h1> <strong> Bạn không được phép ở đây !!!!!!!!!!! </strong> </h1>
+        <strong><a href="{% url 'home_page' %}"> Trở về trang chủ</a> </strong>
+    {% endif %}
+{% endblock %}

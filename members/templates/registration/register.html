@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block tittle %}
+    <title> Register </title>
+{% endblock %}
+
+{% block body %}
+    <div class = 'container'>
+        <h1> Đăng ký </h1>
+        <br>
+        <div class = "form-group">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class = "btn btn-secondary"> đăng ký </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

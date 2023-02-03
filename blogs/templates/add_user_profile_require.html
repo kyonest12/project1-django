@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+{% block tittle %}
+    <title>profile_alert</title>
+{% endblock %}
+{% block body %}
+    <h1> Bạn chưa có thông tin cá nhân</h1>
+    <p> Thêm thông tin <a href="{% url 'add_user_profile' user.id %}"> đây </a> </p>
+    <a href = "{% url 'home_page' %}" class='btn btn-secondary'> Back </a>
+{% endblock %}

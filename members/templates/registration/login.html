@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block tittle %}
+    <title> Login </title>
+{% endblock %}
+
+{% block body %}
+    <div class = 'container'>
+        <h1> Đăng nhập </h1>
+        <br>
+          <div class="mb-3">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class = "btn btn-secondary"> đăng nhập </button>
+            </form>
+          </div>
+          <strong> Không có mật khẩu ???? <a href="{% url 'register_page' %}"> Đăng ký </a></strong>
+          <br>
+          <strong> Quên mật khẩu ??? <a href="{% url 'reset_password' %}"> Reset mật khẩu </a></strong>
+    </div>
+{% endblock %}
