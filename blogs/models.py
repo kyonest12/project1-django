@@ -18,7 +18,7 @@ class Category(models.Model):
         return reverse('home_page')
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, null = True, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null = True, on_delete=models.CASCADE, related_name="profile_user")
     bio = models.TextField()
     profile_pic = models.ImageField(null=True, blank=True, upload_to='images/profile')
     facebook_url = models.CharField(max_length=500, null=True, blank=True)

@@ -1,4 +1,6 @@
 {% extends 'layout.html' %}
+{% load socialaccount %}
+{% load i18n %}
 {% block tittle %}
     <title> Login </title>
 {% endblock %}
@@ -14,8 +16,12 @@
                 <button class = "btn btn-secondary"> đăng nhập </button>
             </form>
           </div>
+            <br>
+          <strong> Đăng nhập bằng bên thứ ba: {% include "socialaccount/snippets/provider_list.html" with process="login" %} </strong>
+            <br>
           <strong> Không có mật khẩu ???? <a href="{% url 'register_page' %}"> Đăng ký </a></strong>
           <br>
           <strong> Quên mật khẩu ??? <a href="{% url 'reset_password' %}"> Reset mật khẩu </a></strong>
+
     </div>
 {% endblock %}

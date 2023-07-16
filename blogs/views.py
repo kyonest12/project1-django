@@ -11,13 +11,10 @@ class home_view(ListView):
     model = Blog
     template_name = 'home.html'
     ordering = ['-date']
-    most_liked_blog = Blog.objects.all()
-    most_liked_blog = sorted(most_liked_blog, key= lambda t: t.total_like())[:3]
     #bring cate_menu data to layout_html
     def get_context_data(self, *args, **kwargs):
         context = super(home_view, self).get_context_data(*args, **kwargs)
         context["cate_menu"] = Category.objects.all()
-        context["most_liked_blog"] = self.most_liked_blog
         return context
 
 def detail_view(request, blog_id):
@@ -68,7 +65,7 @@ class create_view(LoginRequiredMixin, CreateView):
         context["cate_menu"] = Category.objects.all()
         return context
 
-class update_view(LoginRequiredMixin, UpdateView):
+class update_view(UpdateView):
     model = Blog
     form_class = editForm
     template_name = 'update_blog.html'
@@ -79,7 +76,7 @@ class update_view(LoginRequiredMixin, UpdateView):
         context["cate_menu"] = Category.objects.all()
         return context
 
-class delete_view(LoginRequiredMixin, DeleteView):
+class delete_view(DeleteView):
     model = Blog
     template_name = 'delete_blog.html'
     success_url = reverse_lazy('home_page')
@@ -119,7 +116,7 @@ def listCategoryView(request, cates):
     })
 
 def likeView(request, pk):
-    blog = get_object_or_404(Blog, id=request.POST.get('blog_id'))
+    blog = get_object_or_404(Blog, id=pk)
     if blog.likes.filter(id = request.user.id).exists():
         blog.likes.remove(request.user.id)
     else:

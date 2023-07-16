@@ -47,7 +47,11 @@
                           </a>
                             <ul class="dropdown-menu">
                                     <li> <a class="dropdown-item" href="{% url 'edit_account_profile' %}">Chỉnh sửa thông tin tài khoản</a></li>
-                                    <li> <a class="dropdown-item" href="{% url 'update_user_profile' user.id %}">Chỉnh sửa thông tin cá nhân</a></li>
+                                    {% if  user.profile_user %}
+                                        <li> <a class="dropdown-item" href="{% url 'update_user_profile' user.profile_user.id %}">Chỉnh sửa thông tin cá nhân</a></li>
+                                    {% else %}
+                                        <li> <a class="dropdown-item" href="{% url 'add_user_profile' user.id %}">Thêm thông tin cá nhân</a></li>
+                                    {% endif %}
                             </ul>
                         </li>
                         <button type="button" class="btn btn-secondary" style="font-size: large"> <a class="nav-link" style="font-weight: bolder" href="{% url 'logout' %}">Đăng xuất</a> </button>

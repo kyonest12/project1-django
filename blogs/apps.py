@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class BlogsConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
+    default_auto_field = 'django.db.models.BigAutoField' #generate automatic increase primary key
     name = 'blogs'

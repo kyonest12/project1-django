@@ -47,7 +47,8 @@ class profileForm(forms.ModelForm):
             'facebook_url' : forms.TextInput(attrs={'class' : 'form-control'}),
             'instagram_url': forms.TextInput(attrs={'class' : 'form-control'}),
             'twitter_url' : forms.TextInput(attrs={'class': 'form-control'}),
-            'user': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'user_id', 'type' : 'hidden'})
+            'user': forms.TextInput(attrs={'class': 'form-control',
+                                           'value': '', 'id': 'user_id', 'type' : 'hidden'})
         }
 
 class editprofileForm(forms.ModelForm):
@@ -70,6 +71,7 @@ class createCommentForm(forms.ModelForm):
         }
         widgets = {
             'blog': forms.TextInput(attrs={'type': 'hidden', 'class': 'form-control', 'value': '', 'id': 'blog_id'}),
-            'body': forms.Textarea(attrs={'class': 'form-control', 'cols' : 2, 'rows' : 3, 'placeholder' : 'Nhập bình luận'}),
+            'body': forms.Textarea(attrs={'class': 'form-control',
+                                          'cols' : 2, 'rows' : 3, 'placeholder' : 'Nhập bình luận'}),
             'user': forms.TextInput(attrs={'type': 'hidden', 'class': 'form-control', 'value': '', 'id': 'user_id'}),
         }

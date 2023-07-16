@@ -33,5 +33,12 @@ class passwordChangeView(PasswordChangeView):
     template_name = 'registration/change_password.html'
     success_url = reverse_lazy('password_change_success')
 
+    def get_context_data(self, *args, **kwargs):
+        context = super(PasswordChangeView, self).get_context_data(*args, **kwargs)
+        context["cate_menu"] = Category.objects.all()
+        return context
+
 def passwordChangeSuccess(request):
-    return render(request, 'registration/password_change_success.html')
+    return render(request, 'registration/password_change_success.html', {
+        'cate_menu': Category.objects.all()
+    })
